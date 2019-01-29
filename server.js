@@ -11,6 +11,6 @@ app.listen(port, () => {
     console.log("We are live!");
 });
 
-app.get('status', function(req, res){
+app.get('/status', function(req, res){
     res.status(200);
 });
