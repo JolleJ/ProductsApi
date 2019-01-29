@@ -33,11 +33,12 @@ const getProductById = (req, res) => {
 const createProduct = (req, res) => {
     const name = req.body.name;
     const price = req.body.price;
-    client.query('INSERT INTO product_table (name, price) VALUES ($1, $2)', [name, price], (error, results) =>{
+    const text = req.body.text;
+    client.query('INSERT INTO product_table (name, price, text) VALUES ($1, $2, $3)', [name, price, text], (error, results) =>{
         if(error) {
             throw error
         }
-        res.status(201).send("Products added with id")
+        res.status(201).send("Product added")
     });
 }
 
