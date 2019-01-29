@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.json({info: "Server Working!"});
 });
 
-app.get('./products', db.getProducts);
+app.get('/products', db.getProducts);
 
 app.listen(port, () => {
     console.log("Running");
