@@ -10,3 +10,11 @@ app.use(
         extended: true,
     })
 );
+
+app.get('/', (req, res) => {
+    res.json({info: "Server Working!"});
+});
+
+app.listen(port, () => {
+    console.log("Running");
+});
