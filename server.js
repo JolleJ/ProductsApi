@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
 
 app.get('/products', db.getProducts);
 
+app.post('/products', db.createProduct);
+
+
+
 app.listen(port, () => {
     console.log("Running");
 });
