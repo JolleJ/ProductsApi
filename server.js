@@ -1,5 +1,5 @@
 const express = require('express');
-const client = require('pg');
+const { Pool, Client } = require('pg');
 const bodyParser = require('body-parser');
 
 
@@ -10,8 +10,14 @@ app.use(bodyParser.json());
 
 var router = express.Router();
 
+const pool = new Pool();
+
+
+
 router.get('/', function(req,res){
-    res.json({message: "It Works"});
+    pool.query('SELECT * FROM product_table', (err, res) => {
+        res.json({message: "It Worked!"});
+    });
 });
 
 app.use('/api', router);
