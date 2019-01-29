@@ -4,13 +4,16 @@ const bodyParser = require('body-parser');
 
 
 const app = express();
+const port = process.env.PORT || 8080;
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-const port = process.env.PORT || 5000;
+var router = express.Router();
 
-app.listen(port, () => {
-    console.log("We are live!");
+router.get('/', function(req,res){
+    res.json({message: "It Works"});
 });
 
-app.get('/status', function(req, res){
-    res.status(200);
-});
+app.use('/api', router);
+
+app.listen(port);
