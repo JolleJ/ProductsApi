@@ -31,9 +31,8 @@ const getProductById = (req, res) => {
 //Posting a new product = 
 
 const createProduct = (req, res) => {
-    const {name} = req.body;
-    const {price} = parseInt(req.body);
-    client.query('INSERT INTO product_table (name, price) VALUES ($1, $2)' [name, price], (error, results) =>{
+    const {name, price} = req.body;
+    client.query('INSERT INTO product_table (name, price) VALUES ($1, $2)', [name, price], (error, results) =>{
         if(error) {
             throw error
         }
