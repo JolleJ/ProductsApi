@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 const express = require('express');
 const { Pool, Client } = require('pg');
 const bodyParser = require('body-parser');
@@ -12,19 +12,20 @@ app.use(bodyParser.json());
 var router = express.Router();
 
 const pool = new Pool({
-    user: process.env.PG_USER,
-    host: process.env.PG_HOST,
-    database: process.env.PG_DATABASE,
-    password: process.env.PG_PASSWORD,
+    user: "otvuzfjqceqoom",
+    host: "ec2-54-75-245-94.eu-west-1.compute.amazonaws.com",
+    database: "d6h6dl284lgq98",
+    password: "ac7b563a023c14422324bad89ab77cb81249f2e31a6c2b0ee186537cce346304",
     port: process.env.PORT,
 });
 
 
 
 router.get('/', function(req,res){
-    pool.query('SELECT * FROM product_table', (err, res) => {
-        res.json({message: "It Worked!"});
-    });
+    pool.query('SELECT NOW()', (err, res) => {
+        console.log(err, res)
+        pool.end()
+      })
 });
 
 app.use('/api', router);
