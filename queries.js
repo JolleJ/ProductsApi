@@ -32,6 +32,7 @@ const getProductById = (req, res) => {
 
 const createProduct = (req, res) => {
     const name = req.body.name;
+    const price = req.body.price;
     client.query('INSERT INTO product_table (name, price) VALUES ($1, $2)', [name, price], (error, results) =>{
         if(error) {
             throw error
